@@ -136,14 +136,7 @@ class _HomeState extends State<Home> {
 
   blockchainInit() async {
     try {
-      blockchain = await Blockchain.create(
-        config: const BlockchainConfig.esplora(
-          config: EsploraConfig(
-            baseUrl: 'https://mutinynet.ltbl.io/api',
-            stopGap: 10,
-          ),
-        ),
-      );
+      blockchain = await Blockchain.createMutinynet();
     } on Exception catch (e) {
       setState(() {
         displayText = "Error: ${e.toString()}";
